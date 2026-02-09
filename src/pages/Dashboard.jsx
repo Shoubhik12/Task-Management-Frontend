@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import useFetch from "../UseFetch"
+import useFetch from "../useFetch"
 import { useParams } from "react-router"
 
 

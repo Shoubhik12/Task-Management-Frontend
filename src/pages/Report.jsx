@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router"
-import useFetch from "../UseFetch"
+import useFetch from "../useFetch"
 import { useState } from "react"
 import { Chart , ArcElement, Tooltip, Legend,CategoryScale, LinearScale, BarElement } from "chart.js"
 import { Doughnut ,Bar } from "react-chartjs-2"

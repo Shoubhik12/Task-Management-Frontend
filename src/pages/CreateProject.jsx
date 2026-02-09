@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router"
-import useFetch from "../UseFetch"
+import useFetch from "../useFetch"
 import { useState } from "react"
 import { toast } from "react-toastify"
 
