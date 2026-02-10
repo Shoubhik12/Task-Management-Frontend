@@ -61,7 +61,7 @@ const Dashboard =()=>{
                             <p className="text-center my-2 fs-6"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
                         </div>
-                        <div className="col-12 col-md-10 text-info">
+                        <div className="col-12 col-md-10 text-info" style={{minHeight:"500px"}} >
                                <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center"  >
                                      <h1 className="px-3 py-2" >Projects</h1>
                                      <a  className="btn btn-primary  mx-4 my-3 "  href="/createpj" >Add Projects</a>
