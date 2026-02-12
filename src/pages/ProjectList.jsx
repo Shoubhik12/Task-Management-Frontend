@@ -42,6 +42,8 @@ const ProjectList =()=>{
                                <div>{
                                     !loading  && pjList.map(dt=><div className="row"><div className="col-2" >{dt.name}</div>    <div className="col-10">{dt.description}</div></div>)
                                 }</div>
+
+                                <a  className="btn btn-info float-end mx-4" href="/createpj">Create Task</a>
                         </div>
                   </div>
              </main>
