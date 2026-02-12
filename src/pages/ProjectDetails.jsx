@@ -16,6 +16,8 @@ const ProjectDetails =()=>{
 
     const [taskList,setTasks] = useState([])
     const [filters,setFilters] = useState("status")
+    
+    let email = localStorage.getItem("email")
 
     useEffect(()=>{
         let newProject = data ?data.filter(dt=>dt.name== proj.name):[]
@@ -44,7 +46,7 @@ const ProjectDetails =()=>{
              <main className="container-fluid h-auto"  >
                   <div className="row"  >
                         <div className="col-sm-12   col-md-2  py-3 bg-info-subtle">
-                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Home</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href={`/dashboard/${email}`} className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Home</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>

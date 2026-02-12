@@ -13,6 +13,8 @@ const Dashboard =()=>{
     const [proj,setProj] = useState([])
     const [status,setStatus] = useState(false)
 
+    localStorage.setItem("email",user.email)
+
     useEffect(()=>{
         if(data){
             console.log(data)
@@ -56,7 +58,7 @@ const Dashboard =()=>{
              <main className="container-fluid   h-auto " >
                   <div className="row  "  >
                         <div className="col-12  col-md-2  py-3 bg-info-subtle ">
-                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Home</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Home</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
@@ -101,6 +103,7 @@ const Dashboard =()=>{
                                     <button className="btn btn-primary" onClick={()=>setStatus(false)}  >Not Completed</button>
                                     <button className="btn btn-primary" onClick={()=>setStatus(true)} >Completed</button>
                                </div>
+                               <a href="/" className="btn btn-danger float-end my-2"  >Log out</a>
                         </div>
                   </div>
              </main>
