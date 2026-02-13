@@ -12,8 +12,8 @@ const TaskDetails =()=>{
 
    useEffect(()=>{
         if(data){
-            const newTask = data.filter(dt=>dt.name==task.name)
-            selectedTask(newTask)
+            const newTask = data.find(dt=>dt.name==task.name)
+            selectedTask([newTask])
             console.log(stask)
         }
    },[data])
