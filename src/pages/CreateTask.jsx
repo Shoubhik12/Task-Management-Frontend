@@ -101,11 +101,13 @@ const CreateTask =()=>{
                 body: JSON.stringify(payload)
             })
 
+
             toast("New task created.")
 
             if(!response.ok){
                 throw "Task not created."
             }
+
         } catch (error) {
             console.log(error)
         }

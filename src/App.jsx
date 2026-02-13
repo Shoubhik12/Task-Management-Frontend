@@ -33,9 +33,42 @@ function App() {
           body: JSON.stringify(userForm)
         })
 
+        const res = await response.json()
+
+        console.log(res.data._id)
+
         if(!response.ok){
            throw "User not created. "
         }
+
+          const payload = {
+           name:"Demo Task",
+           project:"698f0fd7baa799ab48493ca7",
+           team:"6977bc2f82ceaf2888c1cd05",
+           owners:[res.data._id],
+           tags:"No tags",
+           timeToComplete:0,
+           status: 'In Progress'
+        }
+
+         try {
+            const response = await fetch("https://task-management-ashy-one.vercel.app/tasks",{
+                method:"POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify(payload)
+            })
+
+
+
+            if(!response.ok){
+                throw "Task not created."
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
+        
         toast("User created successfully.")
         navigate("/signin")
      } catch (error) {

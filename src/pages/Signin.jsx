@@ -35,7 +35,7 @@ function Signin() {
 
         const data = await response.json()
         //console.log(data)
-
+       // console.log(response.formData())
         localStorage.setItem("adminToken",data.token)
 
         navigate(`/dashboard/${loginForm.email}`)
