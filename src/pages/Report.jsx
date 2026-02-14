@@ -15,6 +15,7 @@ const Report =()=>{
 
 
     let email = localStorage.getItem("email")
+    const lastweek  = useFetch("https://task-management-ashy-one.vercel.app/report/last-week")
     const pending = useFetch("https://task-management-ashy-one.vercel.app/report/pending")
     const completed = useFetch("https://task-management-ashy-one.vercel.app/report/closed-task")
     const {data,loading,err} = useFetch("https://task-management-ashy-one.vercel.app/tasks")
@@ -32,6 +33,16 @@ const Report =()=>{
              setComplete(value)
         }
     },[pending.data,completed.data])
+
+    let lastweekData = 0
+
+    useEffect(()=>{
+        if(!lastweek.loading && lastweek.data){
+            lastweekData= lastweek.data.length
+            console.log(lastweek.data.length)
+        }
+
+    },[lastweek.data])
 
 
     useEffect(()=>{
@@ -64,6 +75,8 @@ const Report =()=>{
                             <p className="text-center py-2 fs-5"  ><a href="" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
                         </div>
                         <div className="col-sm-12 col-md-10 py-2  text-info"  style={{minHeight:"400px"}} >
+                               <h2 className="text-center">Tasks Completed Last Week: {!lastweek.loading && lastweek.data && <>{lastweek.data.length}</>} </h2>
+                               <hr />
                                <h2 className="text-center">Work Pending/Closed</h2>
                                <div className="d-flex justify-content-center"  style={{maxHeight:"300px"}}>
                                 {

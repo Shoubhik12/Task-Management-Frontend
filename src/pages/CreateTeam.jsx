@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router"
 
 import { useState } from "react"
 import { toast } from "react-toastify"
+import useFetch from "../useFetch"
 
 
 const CreateTeam =()=>{
@@ -13,6 +14,26 @@ const CreateTeam =()=>{
         name:"",
         description:""
     })
+
+    const [owners,setOwners] = useState([])
+
+    const tasks = useFetch("https://task-management-ashy-one.vercel.app/tasks")
+
+    useEffect(()=>{
+        if(!tasks.loading && tasks.data ){
+            //console.log(tasks.data)
+            const allOwners = tasks.data.flatMap(task => task.owners)
+
+         
+        const uniqueOwners = Array.from(
+           new Map(allOwners.map(owner => [owner._id, owner])).values()
+        )
+
+    
+          setOwners(uniqueOwners)
+          console.log(owners)
+        }
+    },[tasks.data])
 
     const handleSubmit=(e)=>{
         const {name,value} = e.target
@@ -66,6 +87,14 @@ const CreateTeam =()=>{
                                       <input type="text" name="name" value={tjForm.name} onChange={handleSubmit}   className="form-control" />
                                       <label htmlFor="description"   >Description:</label>
                                       <textarea name="description"  value={tjForm.description}  onChange={handleSubmit}  className="form-control" ></textarea>
+                                      <label htmlFor="owner">Owner:</label>
+                                      {
+                                        !tasks.loading && <select className="form-select" >
+                                              {
+                                                owners.map(ow=><option>{ow.email}</option>)
+                                              }
+                                        </select>
+                                      }
                                       <button type="submit" className="btn btn-primary my-4">Submit</button>
                                </form>
                                </div>
