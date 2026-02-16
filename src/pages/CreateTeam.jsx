@@ -87,7 +87,7 @@ const CreateTeam =()=>{
                                       <input type="text" name="name" value={tjForm.name} onChange={handleSubmit}   className="form-control" />
                                       <label htmlFor="description"   >Description:</label>
                                       <textarea name="description"  value={tjForm.description}  onChange={handleSubmit}  className="form-control" ></textarea>
-                                      <label htmlFor="owner">Owner:</label>
+                                      <label htmlFor="owner">Member:</label>
                                       {
                                         !tasks.loading && <select className="form-select" >
                                               {
