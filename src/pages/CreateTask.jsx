@@ -130,7 +130,7 @@ const CreateTask =()=>{
                         <div className="col-sm-12 col-md-10 py-2  text-info" style={{minHeight:"500px"}} >
                                <h3>Create Task</h3>
                                {
-                                  !projects.loading  && !tasks.loading && !teams.loading ? <div className="px-4">
+                                  !projects.loading  && !tasks.loading && tasks.data  && !teams.loading ? <div className="px-4">
                                        <form id="tjform" onSubmit={handleForm} >
                                              <label htmlFor="name">Name:</label>
                                              <input type="text" name="name" value={tjForm.name} onChange={handleSubmit} className="form-control" />
