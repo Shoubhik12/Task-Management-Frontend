@@ -50,9 +50,12 @@ const ProjectDetails =()=>{
                             <p className="text-center my-2 fs-6"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Log Out</a></p>
                         </div>
                         <div className="col-sm-12 col-md-10 text-info" style={{minHeight:"500px"}} >
-                                {!loading && project.length>0 && <div> <h3>{project[0].name}</h3> <h3>{project[0].description}</h3> </div>}
+                                {!loading && project.length>0 ? <div> <h3>{project[0].name}</h3> <h3>{project[0].description}</h3> </div>
+                                   : <div>Loading !!!</div>
+                                 }
                                 <hr />
                                 <h2>Task List</h2>
                                 {

@@ -33,6 +33,7 @@ const ProjectList =()=>{
                             <p className="text-center py-2 fs-5"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Log Out</a></p>
                         </div>
                         <div className="col-sm-12 col-md-10 py-2  text-info" style={{minHeight:"500px"}}>
                               <div className="row">
@@ -40,7 +41,7 @@ const ProjectList =()=>{
                                  <div className="col-10"><h2>Description</h2></div>
                               </div>  
                                <div>{
-                                    !loading  && pjList.map(dt=><div className="row"><div className="col-2" >{dt.name}</div>    <div className="col-10">{dt.description}</div></div>)
+                                    !loading  ?  pjList.map(dt=><div className="row"><div className="col-2" >{dt.name}</div>    <div className="col-10">{dt.description}</div></div>) : <h2>Loading Projects!!!</h2>
                                 }</div>
 
                                 <a  className="btn btn-info float-end mx-4" href="/createpj">Create Project</a>

@@ -62,6 +62,7 @@ const Dashboard =()=>{
                             <p className="text-center my-2 fs-6"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center my-2 fs-6"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Log Out</a></p>
                         </div>
                         <div className="col-12 col-md-10 text-info" style={{minHeight:"500px"}} >
                                <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center"  >
@@ -70,11 +71,11 @@ const Dashboard =()=>{
                                </div>
                                <div >
                                     {
-                                        !loading && proj.length>0 &&<div className="d-flex flex-wrap gap-2">
+                                        !loading && proj.length>0 ?<div className="d-flex flex-wrap gap-2">
                                             {
                                                 proj.map(pj=><div className="card px-2 mx-2 py-2"><p   ><a href={`/pdetails/${pj}`} className="link-info  link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{pj}</a></p></div>)
                                             }
-                                        </div>
+                                        </div> : <div>Loading Projects!!!</div>
                                     }
                                </div>
                                <hr />
@@ -84,7 +85,7 @@ const Dashboard =()=>{
                                </div>
                                <div>
                                   {
-                                     !loading && tasks.length>0 && <div className="d-flex">
+                                     !loading && tasks.length>0 ? <div className="d-flex">
                                          {
                                             tasks.map(task=><div className="card px-2 py-2 mx-2 text-primary">
                                                    <p   ><a href={`/tdetails/${task.name}`} className="link-info  link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{task.name}</a></p>
@@ -94,7 +95,7 @@ const Dashboard =()=>{
                                                    }
                                                </div>)
                                          }
-                                     </div>
+                                     </div>:<div>Loading Tasks!!!</div>
                                   }
                                </div>
                                <hr />
@@ -103,7 +104,7 @@ const Dashboard =()=>{
                                     <button className="btn btn-primary" onClick={()=>setStatus(false)}  >Not Completed</button>
                                     <button className="btn btn-primary" onClick={()=>setStatus(true)} >Completed</button>
                                </div>
-                               <a href="/" className="btn btn-danger float-end my-2"  >Log out</a>
+                               
                         </div>
                   </div>
              </main>

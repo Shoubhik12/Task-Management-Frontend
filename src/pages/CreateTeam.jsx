@@ -78,6 +78,7 @@ const CreateTeam =()=>{
                             <p className="text-center py-2 fs-5"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="/report" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Log Out</a></p>
                         </div>
                         <div className="col-sm-12 col-md-10 py-2  text-info"   style={{minHeight:"500px"}}>
                                <h3>Create Team</h3>

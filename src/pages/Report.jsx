@@ -73,14 +73,15 @@ const Report =()=>{
                             <p className="text-center py-2 fs-5"  ><a href="/pjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Projects</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="/tjlist" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Team</a></p>
                             <p className="text-center py-2 fs-5"  ><a href="" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Reports</a></p>
+                            <p className="text-center my-2 fs-6"  ><a href="/" className="link-primary link-offset-2 link-underline-opacity-100 link-underline-opacity-100-hover">Log Out</a></p>
                         </div>
                         <div className="col-sm-12 col-md-10 py-2  text-info"  style={{minHeight:"400px"}} >
-                               <h2 className="text-center">Tasks Completed Last Week: {!lastweek.loading && lastweek.data && <>{lastweek.data.length}</>} </h2>
+                               <h2 className="text-center">Tasks Completed Last Week: {!lastweek.loading && lastweek.data ? <>{lastweek.data.length}</> : <>Loading !!!</>} </h2>
                                <hr />
                                <h2 className="text-center">Work Pending/Closed</h2>
                                <div className="d-flex justify-content-center"  style={{maxHeight:"300px"}}>
                                 {
-                                    !pending.loading && !completed.loading && <Doughnut data={{
+                                    !pending.loading && !completed.loading ? <Doughnut data={{
                                         labels:["No. of tasks pending","No. of tasks completed"],
                                         datasets:[{
                                             label:"Report",
@@ -91,20 +92,20 @@ const Report =()=>{
                                             ],
                                             hoverOffset: 4
                                         }]
-                                    }} />
+                                    }} /> : <h3>Loading !!!</h3>
                                 }
                                </div>
                                <hr />
                                <h2 className="text-center">Tasks closed by teams</h2>
                                <div className="d-flex justify-content-center"  style={{maxHeight:"300px"}}>
                                      {
-                                !loading &&  <Bar data={{
+                                !loading ? <Bar data={{
                                  labels:Object.keys(teams),
                                  datasets:[{
                                  label:"Teams",
                                  data: Object.values(teams)
                                  }]
-                                }} /> 
+                                }} /> : <h3>Loading !!!</h3> 
                                }
                                </div>
                         </div>
