@@ -41,7 +41,7 @@ const ProjectList =()=>{
                                  <div className="col-10"><h2>Description</h2></div>
                               </div>  
                                <div>{
-                                    !loading  ?  pjList.map(dt=><div className="row"><div className="col-2" >{dt.name}</div>    <div className="col-10">{dt.description}</div></div>) : <h2>Loading Projects!!!</h2>
+                                    !loading  ?  pjList.map(dt=><div className="row"><div className="col-2" ><a href={`/pdetails/${dt.name}`} className="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"  >{dt.name}</a></div>    <div className="col-10">{dt.description}</div></div>) : <h2>Loading Projects!!!</h2>
                                 }</div>
 
                                 <a  className="btn btn-info float-end mx-4" href="/createpj">Create Project</a>

@@ -57,13 +57,15 @@ const ProjectDetails =()=>{
                                    : <div>Loading !!!</div>
                                  }
                                 <hr />
-                                <h2>Task List</h2>
+                                <h2>Tasks List</h2>
                                 {
                                     !tasks.loading  && taskList.length>0 && <div>
-                                         {taskList.map(tk=><p>{tk.name} <br/> {filters=="status"?tk.status : tk.timeToComplete}  </p>)}
+                                         {taskList.map(tk=><p>{tk.name} <br/> {filters=="status"?tk.status : tk.timeToComplete} <br /> {tk.tags.join(" , ")}  <br /> {tk.owners.map(tk=>tk.email+"   ")}  </p>)}
                                     </div>
                                 }
-
+                                <a  className="btn btn-info " href="/createtj">Create Task</a>
+                                <br />
+                                <hr />
                                 <div className="d-flex flex-wrap py-4">
                                       <h4>Filters:</h4>
                                       <button className="mx-4  btn btn-primary" onClick={()=>setFilters("status")}  >Status</button>
