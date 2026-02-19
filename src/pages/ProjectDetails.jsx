@@ -59,9 +59,9 @@ const ProjectDetails =()=>{
                                 <hr />
                                 <h2>Tasks List</h2>
                                 {
-                                    !tasks.loading  && taskList.length>0 && <div>
+                                    !tasks.loading  && taskList.length>0 ? <div>
                                          {taskList.map(tk=><p>{tk.name} <br/> {filters=="status"?tk.status : tk.timeToComplete} <br /> {tk.tags.join(" , ")}  <br /> {tk.owners.map(tk=>tk.email+"   ")}  </p>)}
-                                    </div>
+                                    </div> : <h3>No Tasks Found.</h3>
                                 }
                                 <a  className="btn btn-info " href="/createtj">Create Task</a>
                                 <br />
