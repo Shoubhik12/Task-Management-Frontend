@@ -15,9 +15,13 @@ const ProjectDetails =()=>{
     const [project,setProject] = useState([])
 
     const [taskList,setTasks] = useState([])
-    const [filters,setFilters] = useState("status")
+    const [selStatus,setselStatus] = useState("In Progress")
     
+
+
     let email = localStorage.getItem("email")
+
+    const statuses = ['To Do', 'In Progress', 'Completed', 'Blocked']
 
     useEffect(()=>{
         let newProject = data ?data.filter(dt=>dt.name== proj.name):[]
@@ -31,11 +35,21 @@ const ProjectDetails =()=>{
 
     useEffect(()=>{
         if(!tasks.loading && tasks.data){
-            const newTask = tasks.data.filter(tk=>tk.project.name==proj.name)
+            const newTask = tasks.data.filter(tk=>tk.project.name==proj.name).filter(tk=>tk.status==selStatus)
             setTasks(newTask)
             console.log(taskList)
         }
-    },[tasks])
+    },[tasks.data,tasks.loading,selStatus, proj.name])
+
+    const handleSort = (isIncreasing) => {
+    const sortedTasks = [...taskList].sort((a, b) => 
+        isIncreasing
+            ? a.timeToComplete - b.timeToComplete
+            : b.timeToComplete - a.timeToComplete
+    );
+
+    setTasks(sortedTasks);
+    };
 
 
     return(
@@ -60,16 +74,24 @@ const ProjectDetails =()=>{
                                 <h2>Tasks List</h2>
                                 {
                                     !tasks.loading  && taskList.length>0 ? <div>
-                                         {taskList.map(tk=><p>{tk.name} <br/> {filters=="status"?tk.status : tk.timeToComplete} <br /> {tk.tags.join(" , ")}  <br /> {tk.owners.map(tk=>tk.email+"   ")}  </p>)}
+                                         {taskList.map(tk=><p>{tk.name} <br/> {tk.status } <br /> {tk.timeToComplete} <br /> {tk.tags.join(" , ")}  <br /> {tk.owners.map(tk=>tk.email+"   ")}  </p>)}
                                     </div> : <h3>No Tasks Found.</h3>
                                 }
                                 <a  className="btn btn-info " href="/createtj">Create Task</a>
                                 <br />
                                 <hr />
-                                <div className="d-flex flex-wrap py-4">
-                                      <h4>Filters:</h4>
-                                      <button className="mx-4  btn btn-primary" onClick={()=>setFilters("status")}  >Status</button>
-                                      <button className="mx-4 btn btn-primary" onClick={()=>setFilters("timeToComplete")} >Time to Complete</button>
+                                <div className="d-flex flex-wrap  py-4">
+                                      <h4 className="pe-4">Filter Status:</h4>
+                                      <select name="filter" onChange={(event)=>setselStatus(event.target.value)} >
+                                         {
+                                            statuses.map(st=><option value={st} >{st}</option>)
+                                         }
+                                      </select>
+                                </div>
+                                <div className="d-flex flex-wrap  py-4">
+                                      <h4 className="pe-4">Sort:</h4>
+                                      <button className="btn btn-primary mx-2" onClick={()=>handleSort(true)}  >Increasing</button>
+                                      <button className="btn btn-primary" onClick={()=>handleSort(false)}  >Decreasing</button>
                                 </div>
                                 
                         </div>
